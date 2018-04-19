@@ -1,10 +1,10 @@
 function getPeriod (days){
   // days: number 
-  const MS = 86400000
-  let during = days * MS
+  const MS = 86400000 //一天的毫秒数
+  let duration = days * MS
   let period = {}
   let today = new Date()
-  period.start = new Date(today.getTime())
-  period.end = new Date(today.getTime() - during)
+  period.end = new Date(today.getTime())
+  period.start = new Date(today.getTime() - duration)
   return period
 }
