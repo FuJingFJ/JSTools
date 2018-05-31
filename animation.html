@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <style>
+    .wrap {
+      margin: 20px auto 0;
+      width: 500px;
+      border: 1px solid #ccc;
+      text-align: center;
+      /*vertical-align: middle;*/
+    }
+    img {
+      margin: 10px 0;
+      width: 80%;
+      height: 100%;
+      /*vertical-align: middle;*/
+    }
+    #name {
+      margin: 30px 0 0;
+      text-align: center;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+   <img src="http://bpic.588ku.com/element_origin_min_pic/17/06/17/8b91e3acb380d9cd4de59796f6c035cb.jpg"  class="animated"/>
+  </div>
+  <button id="before">before</button>
+  <select>
+  </select>
+  <button id="next">next</button>
+  <div id="name"></div>
+</body>
+<script type="text/javascript">
+  let now = 0
+  let str = 'bounce  flash pulse rubberBand shake headShake swing tada wobble  jello bounceIn  bounceInDown bounceInLeft  bounceInRight bounceInUp  bounceOut bounceOutDown bounceOutLeft bounceOutRight  bounceOutUp fadeIn  fadeInDown  fadeInDownBig fadeInLeft fadeInLeftBig fadeInRight fadeInRightBig  fadeInUp fadeInUpBig fadeOut fadeOutDown fadeOutDownBig fadeOutLeft fadeOutLeftBig  fadeOutRight  fadeOutRightBig fadeOutUp fadeOutUpBig  flipInX flipInY flipOutX  flipOutY  lightSpeedIn  lightSpeedOut rotateIn  rotateInDownLeft  rotateInDownRight rotateInUpLeft rotateInUpRight rotateOut rotateOutDownLeft rotateOutDownRight rotateOutUpLeft rotateOutUpRight  hinge jackInTheBox rollIn  rollOut zoomIn  zoomInDown zoomInLeft  zoomInRight zoomInUp  zoomOut zoomOutDown zoomOutLeft zoomOutRight  zoomOutUp slideInDown slideInLeft slideInRight  slideInUp slideOutDown  slideOutLeft  slideOutRight slideOutUp'
+  let arr = str.split(' ')
+  for(let i = 0 ; i < arr.length; i++) {
+    if(arr[i].length === 0) {
+      arr.splice(i,1)
+    }
+  }
+  arr.unshift('')
+  let selector = document.querySelector('select')
+  for(let i = 0; i < arr.length; i++) {
+    let option = document.createElement('option')
+    option.value = i
+    option.innerHTML = arr[i]
+    selector.appendChild(option)
+  }
+  function showName (e) {
+    let name = document.querySelector('#name')
+    name.innerHTML = e
+  }
+  next.onclick = function() {
+    let img = document.querySelector('img')
+    if(now > 0) {
+      img.classList.remove(arr[now])
+    }
+    now++
+    if(now === arr.length){
+      now = 0
+    }
+    selector.value = now
+    if(now != 0) {
+      img.classList.add(arr[now])
+      showName (arr[now])
+    }
+  }
+  before.onclick = function () {
+    let img = document.querySelector('img')
+    if(now > 0) {
+      img.classList.remove(arr[now])
+    }
+    now--
+    if(now < 0 ){
+      now = 0
+    }
+    selector.value = now
+    if(now != 0) {
+      img.classList.add(arr[now])
+      showName (arr[now])
+    }
+  }
+  selector.onchange = function(e){
+    let img = document.querySelector('img')
+    let value = Number(selector.value)
+     if(now > 0) {
+      img.classList.remove(arr[now])
+    }
+    now = value
+    if(now != 0) {
+      img.classList.add(arr[now])
+      showName (arr[now])
+
+    }
+    selector.value = now
+  }
+</script>
+</html>
