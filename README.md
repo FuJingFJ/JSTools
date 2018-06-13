@@ -7,3 +7,4 @@
 5. animation -- 引用Animate的css, 前后选择以及下拉选择，直观展示效果。
 6. country -- Echats下全球十大最适合移民国家和最幸福国家排行。
 7. count --字数统计
+8. marquee -- 文字横向走马灯
